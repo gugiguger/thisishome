@@ -1,8 +1,10 @@
-var Choice = React.createClass({
-    onButtonClick: function(to) {
+import React from "react";
+
+export default class Choice extends React.Component {
+    onButtonClick(to) {
         this.props.changeAdventure(to);
-    },
-    render: function() {
+    }
+    render() {
         var details = this.props.details;
         return (
             <a
@@ -13,4 +15,4 @@ var Choice = React.createClass({
             </a>
         );
     }
-});
+}
