@@ -11,6 +11,7 @@ export default class Game extends React.Component {
             adventures: adventures
         };
         this.changeAdventure = this.changeAdventure.bind(this);
+        this.resetGame = this.resetGame.bind(this);
     }
 
     changeAdventure(to) {
@@ -37,7 +38,13 @@ export default class Game extends React.Component {
 
             return choices;
         } else if (data.ending) {
-            return <Ending key={data.ending.code} ending={data.ending} />;
+            return (
+                <Ending
+                    key={data.ending.code}
+                    ending={data.ending}
+                    resetGame={this.resetGame}
+                />
+            );
         }
     }
     render() {
@@ -47,19 +54,13 @@ export default class Game extends React.Component {
         });
 
         return (
-            <div
-                className="main-container"
-                style={{ backgroundImage: "url(" + data.image + ")" }}
-            >
-                <nav>
-                    <h1 onClick={this.resetGame}>
-                        <span className="title">This is</span> Home
-                    </h1>
-                </nav>
-                <div className="current-adventure">
-                    {text}
-                    <div className="choices">{this.showChoices(data)}</div>
-                </div>
+            <div>
+                <div
+                    className="main-container"
+                    style={{ backgroundImage: "url(" + data.image + ")" }}
+                />
+                <div className="current-adventure">{text}</div>
+                <div className="choices">{this.showChoices(data)}</div>
             </div>
         );
     }

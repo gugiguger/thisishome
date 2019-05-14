@@ -1,3 +1,8 @@
 * {
-    background-color: salmon;
+    background-color: #5454fe;
+}
+
+.main-container {
+    height: 425px;
+    width: 640px;
 }
