@@ -1,9 +1,40 @@
-* {
-    /* background-color: #5454fe; */
+body,
+html {
+    background-color: black;
+}
+.screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    content: " ";
+    overflow: hidden;
+}
+
+#switcher-tv {
+    position: fixed;
+    color: white;
+    right: 14px;
+    bottom: 20px;
+    padding: 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#playpausebtn {
+    display: block;
+    margin: auto;
+    position: absolute;
+    bottom: 75px;
+    right: 33px;
+    font-size: 20px;
+    color: white;
 }
 
 .intro {
-    background-image: url("https://media.giphy.com/media/5rmQdXUaAzutq/giphy.gif");
+    background: url("https://media.giphy.com/media/5rmQdXUaAzutq/giphy.gif");
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -49,12 +80,14 @@ img {
     height: 100vh;
     z-index: -1000;
     position: absolute;
+    opacity: 0.8;
 }
 
 .choices {
     margin: 10px auto 0 auto;
     text-align: center;
 }
+
 .description {
     font-size: 29px;
     width: 34em;
@@ -67,37 +100,6 @@ img {
         rgb(29, 50, 59) 0.283662px -0.958924px 0px,
         rgb(29, 50, 59) 0.96017px -0.279415px 0px;
     text-transform: uppercase;
-}
-
-.hiders {
-    margin: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-.hiders p {
-    position: relative;
-    clear: both;
-    margin: 0;
-    float: right; /* makes animation go left-to-right */
-    width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
-    background: white; /* same as page background */
-    animation: typing 2s steps(30, end);
-    animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
-}
-
-.hiders p:nth-child(2) {
-    animation-delay: 2s;
-}
-.hiders p:nth-child(3) {
-    animation-delay: 4s;
-}
-.hiders p:nth-child(4) {
-    animation-delay: 6s;
-}
-.hiders p:nth-child(5) {
-    animation-delay: 8s;
 }
 
 .lines {
@@ -276,6 +278,27 @@ img {
     }
 }
 
+.vhs {
+    position: relative;
+    font-weight: 900;
+    font-size: 1em;
+}
+
+.vhs .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+}
+
+.vhs .letter {
+    display: inline-block;
+    line-height: 1em;
+    transform-origin: 0 0;
+}
+
 .main .time {
     position: absolute;
     right: 2rem;
@@ -344,14 +367,14 @@ img {
     }
 }
 
-.button {
-    margin: 12px;
+#choice-button {
+    margin: 10px;
     color: #eff1ed;
     text-decoration: none;
-    background: #548a5c;
+    background: black;
     display: inline-block;
     padding: 0.375rem 1rem;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
@@ -363,17 +386,72 @@ img {
     z-index: 9999;
 }
 
-#red {
-    font-size: 10px;
-    color: #f00;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-        1px 1px 0 #000;
+#red,
+#green {
+    padding: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #2f99ff;
+    text-shadow: 0px 2px #255fcc;
+    font-size: 7em;
+    /* Change glitch effect here */
+    /* animation: glitch-2 1s infinite linear; */
+    animation: glitch-1 2s infinite linear;
 }
 
-#green {
-    font-size: 10px;
-    color: #0f0;
+@keyframes glitch-1 {
+    0%,
+    12%,
+    15%,
+    52%,
+    55%,
+    82%,
+    85%,
+    100% {
+        opacity: 1;
+        transform: scaleX(1) scaleY(1);
+    }
+    13% {
+        opacity: 0.8;
+        transform: scaleY(2);
+        color: #0ff;
+    }
+    53% {
+        opacity: 0.8;
+        transform: scaleX(0.7);
+        color: #f0f;
+    }
+    83% {
+        opacity: 8;
+        transform: rotate(-10deg);
+        color: #ff0;
+    }
+}
 
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-        1px 1px 0 #000;
+h2 {
+    animation: glitch-2 2s infinite linear;
+}
+
+@keyframes glitch-2 {
+    13% {
+        color: #0ff;
+    }
+    53% {
+        color: #f0f;
+    }
+    83% {
+        color: #ff0;
+    }
+}
+
+#endgame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    padding: 0;
 }

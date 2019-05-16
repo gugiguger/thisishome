@@ -5,9 +5,9 @@ export default class Ending extends React.Component {
     render() {
         let ending = this.props.ending;
         return (
-            <div>
+            <div id="endgame">
                 <p id={ending.code}>{ending.text}</p>
-                <h1 onClick={this.props.resetGame}>Reset</h1>
+                <h2 onClick={this.props.resetGame}>Reset</h2>
             </div>
         );
     }
