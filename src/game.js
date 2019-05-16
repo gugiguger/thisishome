@@ -2,6 +2,7 @@ import React from "react";
 import Choice from "./choice";
 import Ending from "./ending";
 import adventures from "./adventures";
+import Typed from "react-typed";
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class Game extends React.Component {
     }
     showChoices(data) {
         if (data.options) {
-            var choices = data.options.map(data => {
+            let choices = data.options.map(data => {
                 return (
                     <Choice
                         key={data.label}
@@ -48,15 +49,33 @@ export default class Game extends React.Component {
         }
     }
     render() {
-        var data = this.state.adventures[this.state.current_adventure];
-        var text = data.text.split("\n").map(function(el) {
-            return <p key={el}>{el}</p>;
+        let data = this.state.adventures[this.state.current_adventure];
+        let text = data.text.split("\n").map(function(el) {
+            return (
+                <p className="description" key={el}>
+                    {el}
+                </p>
+            );
         });
 
         return (
-            <div>
+            <div className="main-container">
+                <div className="lines" />
+                <div className="main">
+                    <div className="noise" />
+                    <div className="vhs" data-splitting>
+                        VHS
+                    </div>
+                    <div className="time">
+                        <span id="time" />
+                    </div>
+                    <div className="counter">
+                        REC <label id="minutes">00</label>:
+                        <label id="seconds">00</label>
+                    </div>
+                </div>
                 <div
-                    className="main-container"
+                    className="img-container"
                     style={{ backgroundImage: "url(" + data.image + ")" }}
                 />
                 <div className="current-adventure">{text}</div>

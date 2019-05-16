@@ -1,8 +1,379 @@
 * {
-    background-color: #5454fe;
+    /* background-color: #5454fe; */
+}
+
+.intro {
+    background-image: url("https://media.giphy.com/media/5rmQdXUaAzutq/giphy.gif");
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+
+img {
+    width: 100%;
+}
+#titletext {
+    color: white;
+}
+
+#starttext {
+    color: white;
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-shadow: -2px 0 0 #fdff2a, -4px 0 0 #df4a42, 2px 0 0 #91fcfe,
+        4px 0 0 #4405fc;
+    animation: blink 1s steps(3, start) infinite;
+}
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
 }
 
 .main-container {
-    height: 425px;
-    width: 640px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.img-container {
+    width: 100%;
+    height: 100vh;
+    z-index: -1000;
+    position: absolute;
+}
+
+.choices {
+    margin: 10px auto 0 auto;
+    text-align: center;
+}
+.description {
+    font-size: 29px;
+    width: 34em;
+    color: white;
+    text-shadow: rgb(29, 50, 59) 5px 0px 0px,
+        rgb(29, 50, 59) 0.540302px 0.841471px 0px,
+        rgb(29, 50, 59) -0.416147px 0.909297px 0px,
+        rgb(29, 50, 59) -0.989992px 0.14112px 0px,
+        rgb(29, 50, 59) -0.653644px -0.756802px 0px,
+        rgb(29, 50, 59) 0.283662px -0.958924px 0px,
+        rgb(29, 50, 59) 0.96017px -0.279415px 0px;
+    text-transform: uppercase;
+}
+
+.hiders {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.hiders p {
+    position: relative;
+    clear: both;
+    margin: 0;
+    float: right; /* makes animation go left-to-right */
+    width: 0; /* graceful degradation: if animation doesn't work, these are invisible by default */
+    background: white; /* same as page background */
+    animation: typing 2s steps(30, end);
+    animation-fill-mode: both; /* load first keyframe on page load, leave on last frame at end */
+}
+
+.hiders p:nth-child(2) {
+    animation-delay: 2s;
+}
+.hiders p:nth-child(3) {
+    animation-delay: 4s;
+}
+.hiders p:nth-child(4) {
+    animation-delay: 6s;
+}
+.hiders p:nth-child(5) {
+    animation-delay: 8s;
+}
+
+.lines {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.6;
+    will-change: opacity;
+    animation: opacity 3s linear infinite;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0.6;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    35% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    80% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.lines:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 50%,
+        rgba(0, 0, 0, 0.5) 51%
+    );
+    background-size: 100% 4px;
+    will-change: background, background-size;
+    animation: scanlines 0.2s linear infinite;
+}
+
+@keyframes scanlines {
+    from {
+        background: linear-gradient(
+            to bottom,
+            transparent 50%,
+            rgba(0, 0, 0, 0.5) 51%
+        );
+        background-size: 100% 4px;
+    }
+    to {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5) 50%,
+            transparent 51%
+        );
+        background-size: 100% 4px;
+    }
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 400;
+    opacity: 0.8;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 450;
+}
+
+.noise:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("https://ice-creme.de/images/background-noise.png");
+    pointer-events: none;
+    will-change: background-position;
+    animation: noise 1s infinite alternate;
+}
+
+@keyframes noise {
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+    10% {
+        background-position: -5% -10%;
+    }
+    20% {
+        background-position: -15% 5%;
+    }
+    30% {
+        background-position: 7% -25%;
+    }
+    40% {
+        background-position: 20% 25%;
+    }
+    50% {
+        background-position: -25% 10%;
+    }
+    60% {
+        background-position: 15% 5%;
+    }
+    70% {
+        background-position: 0 15%;
+    }
+    80% {
+        background-position: 25% 35%;
+    }
+    90% {
+        background-position: -10% 10%;
+    }
+}
+
+.main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    font-size: 2rem;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: transparent;
+}
+
+.main .noise:before {
+    background-size: 150%;
+}
+
+.main .vhs {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+    will-change: text-shadow;
+    animation: rgbText 2s steps(9) 0s infinite alternate;
+}
+
+.main .vhs .char {
+    will-change: opacity;
+    animation: type 1.2s infinite alternate;
+    animation-delay: calc(60ms * var(--char-index));
+}
+
+@keyframes type {
+    0%,
+    19% {
+        opacity: 0;
+    }
+    20%,
+    100% {
+        opacity: 1;
+    }
+}
+
+.main .time {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    will-change: text-shadow;
+    animation: rgbText 1s steps(9) 0s infinite alternate;
+}
+
+.main .counter {
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    will-change: text-shadow;
+    animation: rgbText 1s steps(9) 0s infinite alternate;
+}
+
+@keyframes rgbText {
+    0% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            0px 0 1px rgba(251, 0, 231, 0.8), 0 0px 3px rgba(0, 233, 235, 0.8),
+            0px 0 3px rgba(0, 242, 14, 0.8), 0 0px 3px rgba(244, 45, 0, 0.8),
+            0px 0 3px rgba(59, 0, 226, 0.8);
+    }
+    25% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            0px 0 1px rgba(251, 0, 231, 0.8), 0 0px 3px rgba(0, 233, 235, 0.8),
+            0px 0 3px rgba(0, 242, 14, 0.8), 0 0px 3px rgba(244, 45, 0, 0.8),
+            0px 0 3px rgba(59, 0, 226, 0.8);
+    }
+    45% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            5px 0 1px rgba(251, 0, 231, 0.8), 0 5px 1px rgba(0, 233, 235, 0.8),
+            -5px 0 1px rgba(0, 242, 14, 0.8), 0 -5px 1px rgba(244, 45, 0, 0.8),
+            5px 0 1px rgba(59, 0, 226, 0.8);
+    }
+    50% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            -5px 0 1px rgba(251, 0, 231, 0.8), 0 -5px 1px rgba(0, 233, 235, 0.8),
+            5px 0 1px rgba(0, 242, 14, 0.8), 0 5px 1px rgba(244, 45, 0, 0.8),
+            -5px 0 1px rgba(59, 0, 226, 0.8);
+    }
+    55% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            0px 0 3px rgba(251, 0, 231, 0.8), 0 0px 3px rgba(0, 233, 235, 0.8),
+            0px 0 3px rgba(0, 242, 14, 0.8), 0 0px 3px rgba(244, 45, 0, 0.8),
+            0px 0 3px rgba(59, 0, 226, 0.8);
+    }
+    90% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            -5px 0 1px rgba(251, 0, 231, 0.8), 0 5px 1px rgba(0, 233, 235, 0.8),
+            5px 0 1px rgba(0, 242, 14, 0.8), 0 -5px 1px rgba(244, 45, 0, 0.8),
+            5px 0 1px rgba(59, 0, 226, 0.8);
+    }
+    100% {
+        text-shadow: -1px 1px 8px rgba(255, 255, 255, 0.6),
+            1px -1px 8px rgba(255, 255, 235, 0.7),
+            5px 0 1px rgba(251, 0, 231, 0.8), 0 -5px 1px rgba(0, 233, 235, 0.8),
+            -5px 0 1px rgba(0, 242, 14, 0.8), 0 5px 1px rgba(244, 45, 0, 0.8),
+            -5px 0 1px rgba(59, 0, 226, 0.8);
+    }
+}
+
+.button {
+    margin: 12px;
+    color: #eff1ed;
+    text-decoration: none;
+    background: #548a5c;
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    z-index: 9999;
+}
+
+#red {
+    font-size: 10px;
+    color: #f00;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+#green {
+    font-size: 10px;
+    color: #0f0;
+
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+        1px 1px 0 #000;
 }

@@ -5,14 +5,14 @@ export default class Choice extends React.Component {
         this.props.changeAdventure(to);
     }
     render() {
-        var details = this.props.details;
+        let details = this.props.details;
         return (
-            <a
+            <button
                 className="button"
                 onClick={this.onButtonClick.bind(this, details.to)}
             >
                 {details.label}
-            </a>
+            </button>
         );
     }
 }

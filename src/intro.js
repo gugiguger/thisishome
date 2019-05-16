@@ -1,5 +1,6 @@
 import React from "react";
-import TypeIt from "typeit";
+import Typist from "react-typist";
+import Typed from "react-typed";
 
 export default class Intro extends React.Component {
     constructor() {
@@ -20,8 +21,35 @@ export default class Intro extends React.Component {
     render() {
         return (
             <div className="intro">
-                <div id="title_text">This is </div>
-                <h2>PRESS ENTER TO START</h2>
+                <div id="titletext">
+                    <h1>
+                        THIS IS{" "}
+                        <span>
+                            <Typed
+                                strings={[
+                                    "HOME",
+                                    "ZUHAUSE",
+                                    "الصفحة الرئيسية",
+                                    "RUMAH",
+                                    "בית",
+                                    "Nhà",
+                                    "家",
+                                    "HUIS",
+                                    "CASA",
+                                    "KOTI",
+                                    "MAISON",
+                                    "кућа",
+                                    "Главная",
+                                    "NYUMBA"
+                                ]}
+                                typeSpeed={50}
+                                backSpeed={60}
+                                loop
+                            />
+                        </span>{" "}
+                    </h1>
+                </div>
+                <h2 id="starttext">PRESS ENTER TO START</h2>
                 <audio id="#" src="" type="audio/wav" autoPlay loop />
             </div>
         );
