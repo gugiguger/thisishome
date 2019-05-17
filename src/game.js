@@ -61,7 +61,7 @@ export default class Game extends React.Component {
         });
 
         return (
-            <div>
+            <div id="onload-game">
                 <div className="screen">
                     <div className="main-container">
                         <div className="lines" />

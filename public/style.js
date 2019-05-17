@@ -38,7 +38,6 @@
         var h = today.getHours();
         var m = today.getMinutes();
         var s = today.getSeconds();
-        // add a zero in front of numbers < 10
         m = checkTime(m);
         s = checkTime(s);
         document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
@@ -46,6 +45,9 @@
             getTime();
         }, 500);
     }
+
+    /* TV SWITCHER */
+
     var SELECTOR_SCREEN_ELEMENT = ".screen";
     var SELECTOR_SWITCHER_TV = "#switcher-tv";
 
@@ -84,13 +86,13 @@
         isTurnedOn = !isTurnedOn;
     }
 
-    // Initialize
     $(document).ready(buildTimeline);
 
-    // Bindings
     $(document).on("click", SELECTOR_SWITCHER_TV, function() {
         toggleSwitcherTV();
     });
+
+    /* AUDIO SWITCHER */
 
     var audio, playbtn, mutebtn, seek_bar;
     function initAudioPlayer() {
@@ -98,11 +100,8 @@
         audio.src = "/assets/Prologue.mp3";
         audio.loop = true;
         audio.play();
-        // Set object references
         playbtn = document.getElementById("playpausebtn");
-        // Add Event Handling
         playbtn.addEventListener("click", playPause);
-        // Functions
         function playPause() {
             if (audio.paused) {
                 audio.play();

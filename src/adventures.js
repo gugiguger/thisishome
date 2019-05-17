@@ -221,7 +221,7 @@ module.exports = [
         id: 15,
         image: "/assets/winning.jpg",
         text:
-            "The other boat pulls up alongside and demand money. The smuggler pays them off. You and the others who stayed on board hope you can now carry on to Italy. When your boat reaches international waters, the hull gives in...",
+            "The other boat pulls up alongside and demand money. The smuggler pays them off. You and the others who stayed on board hope you can now carry on to Libya. When your boat reaches international waters, the hull gives in...",
         options: [{ label: "Next", to: 22 }]
     },
     {
